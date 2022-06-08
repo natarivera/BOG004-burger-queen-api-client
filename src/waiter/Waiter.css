@@ -70,17 +70,22 @@
 }
 
 .Summary {
-    display: flex;
-    align-content: center;
-    grid-template-columns: 100%;
-    width: 90%;
-    overflow-y: auto;
-    align-self: flex-end;
-    flex-direction: column;
-    justify-content: flex-starts;
-    align-items: stretch;
-    height: 464px;
-    margin: 10px auto auto auto;
+  display: grid;
+  row-gap: 0px;
+  justify-content: space-evenly;
+  align-items: start;
+  justify-items: stretch;
+  align-content: stretch;
+  grid-template-columns: 100%;
+  width: 90%;
+  height: 90%;
+  align-self: flex-end;    
+}
+
+.SumProducts{
+  height: 80%;
+  min-height: 320px;  
+  overflow-y: scroll;
 }
 
 .childSumary {
@@ -107,15 +112,15 @@
 }
 
 .totalPay {
-  padding-top: 20px;
-  height: 40px;
+  margin: 10px 0;
+  padding: 20px;  
   background-color: #fdc029;
   color: #171820;
   border-radius: 10px;
   margin-bottom: 1%;
   font-style: italic;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
   text-decoration: underline;
   text-align: right;
   align-items: flex-end;
