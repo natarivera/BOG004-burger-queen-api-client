@@ -25,7 +25,7 @@ export default function Summary(props) {
                 Pagar <span>{calculateTotalPay()}</span>
             </button>
             <div className="btn-send">
-                <button className="send">Enviar</button>
+                <button className="send" onClick={()=> props.sendOrder()}>Enviar</button>
             </div>
         </div>
     );

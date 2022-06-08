@@ -7,6 +7,7 @@ import Summary from "./Summary";
 import Customer from "./Customer";
 import NameWaiter from "./NameWaiter";
 import OrdersAlert from "./OrdersAlert";
+import OrdersApi from "../api/OrdersApi";
 
 
 
@@ -14,11 +15,13 @@ export default class Waiter extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { numTable: undefined, products: new Map(), customer: '' };
+        this.state = { numTable: undefined, products: new Map(), customer: '', error:undefined };
+        this.ordersApi = new OrdersApi(props.user.accessToken);
         this.handleClick = this.handleClick.bind(this);
         this.addProduct = this.addProduct.bind(this);
         this.subProduct = this.subProduct.bind(this);
         this.setCustomer = this.setCustomer.bind(this);
+        this.sendOrder= this.sendOrder.bind(this);
     }
 
     handleClick(event) {
@@ -63,6 +66,39 @@ export default class Waiter extends React.Component {
         this.setState({ customer });
 
     }
+    sendOrder(){
+        /**
+         * 
+         *  {
+                "id": 1,
+                "userId": 1,
+                "client": "Jude Milhon",
+                "products": [
+                    
+                ],
+                "status": "pending",
+                "dataEntry": "2022-03-05 15:00"
+                },
+         *  */    
+        const order = {
+            userId: this.props.user.id,
+            client: this.state.customer,
+            products: Array.from(this.state.products.values()),
+            status: "pending",
+            dataEntry: new Date(),
+        };
+        this.ordersApi.create(order)//Tarea hacer el then y el catch
+        .then (
+            (newOrder)=>{
+                console.log(newOrder.id);
+            }
+        )
+        .catch(
+            (error)=>{                
+                this.setState({error: 'Error creando la orden '+error});
+            }
+        )
+    }
 
     render() {
         const tablesCount = this.props.tablesCount;
@@ -88,12 +124,12 @@ export default class Waiter extends React.Component {
                     </div>
                     <Customer setCustomer={this.setCustomer} customer={this.state.customer} />
                     <div />
-                    <Summary products={this.state.products} addProduct={this.addProduct} user={this.props.user} subProduct={this.subProduct} />
+                    <Summary products={this.state.products} addProduct={this.addProduct} user={this.props.user} subProduct={this.subProduct} sendOrder={this.sendOrder}/>
                     <Products numTable={this.state.numTable} addProduct={this.addProduct} user={this.props.user} />
                 </div>
             }
-            {!this.props.user && (<Navigate to="/" />)}
-
+            {this.state.error && <div>{this.state.error}</div>}
+            {!this.props.user && (<Navigate to="/" />)}     
         </div>
     }
 }
