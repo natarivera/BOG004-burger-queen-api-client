@@ -90,7 +90,7 @@ export default class Waiter extends React.Component {
         this.ordersApi.create(order)//Tarea hacer el then y el catch
         .then (
             (newOrder)=>{
-                console.log(newOrder.id);
+                this.setState({ products: new Map(), customer: ''});
             }
         )
         .catch(
