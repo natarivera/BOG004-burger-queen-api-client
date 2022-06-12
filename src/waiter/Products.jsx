@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Waiter.css';
-import ProductApi from "../api/ProductApi";
+
+import {ProductApi} from "../api/api-utils";
 
 export default function Products(props) {
     const productApi = new ProductApi(props.user?.accessToken);
@@ -19,7 +20,6 @@ export default function Products(props) {
                     .catch(
                         (error)=>{
                             console.log("Error: "+error);
-                            //TODO: hacer algo!
                         }
                     );
             }
@@ -35,23 +35,19 @@ export default function Products(props) {
             case 'Almuerzo':
                 setCategory("Acompañamiento");
                 setProducts(undefined);
-            break;
-            case "Bebidas":
-                setCategory(undefined);
-                setProducts(undefined);
-            break;
+            break;            
             case "Acompañamiento":
                 setCategory("Bebidas");
                 setProducts(undefined);
             break;
-            default:{
-                throw new Error("Categoria "+category+" no esperada!");
+            default:{//Bebidas
+                setCategory(undefined);
+                setProducts(undefined);
             }
         }
         props.addProduct(prod);        
     }
 
-    
     return (
     <div>
         { category && products && <span onClick={()=>{setCategory(undefined);setProducts(undefined);}} className="material-symbols-outlined">chevron_left</span>}

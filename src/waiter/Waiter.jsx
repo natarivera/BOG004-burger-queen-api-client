@@ -7,7 +7,7 @@ import Summary from "./Summary";
 import Customer from "./Customer";
 import NameWaiter from "./NameWaiter";
 import OrdersAlert from "./OrdersAlert";
-import OrdersApi from "../api/OrdersApi";
+import {OrdersApi} from "../api/api-utils";
 
 
 
