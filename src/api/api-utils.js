@@ -1,4 +1,5 @@
 import UserApi from "./UserApi";
+import OrdersApi from "./OrdersApi";
+import ProductApi from "./ProductApi";
 
-
-export { UserApi}
+export { UserApi, OrdersApi, ProductApi}
