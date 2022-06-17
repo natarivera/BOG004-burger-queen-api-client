@@ -1,0 +1,46 @@
+.Chef {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: flex-start;
+    height: 100%;
+  }
+
+
+.productTable{
+    border: 1px solid white;
+    font-size: 25px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    margin: 45px;    
+    width: 80%; 
+    text-align: left;    
+    border-collapse: collapse;    
+}
+
+.productTable > th, td {
+    border: 1px solid white;    
+    padding: 5px;
+}
+
+.material-symbols-outlined{
+    height: auto;
+
+}
+
+.ChefHeader {
+    margin: 20px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ChefHeader > .Logo{
+    width: 200px;
+    align-self: flex-start;
+    justify-self: left;
+}

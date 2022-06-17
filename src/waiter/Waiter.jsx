@@ -83,6 +83,7 @@ export default class Waiter extends React.Component {
         const order = {
             userId: this.props.user.id,
             client: this.state.customer,
+            numTable: this.state.numTable,
             products: Array.from(this.state.products.values()),
             status: "pending",
             dataEntry: new Date(),
