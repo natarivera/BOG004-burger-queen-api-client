@@ -46,8 +46,11 @@ export default class OrdersApi{
             );   
     }
     
-    list(){        
-        let listURL = this.baseURL;        
+    list(status){        
+        let listURL = this.baseURL;         
+        if(status !== undefined){
+            listURL += `?status=${status}`;
+        }    
         return axios.get(listURL, {headers:this.getHeaders()})
             .then(
                 (result)=>{                                                            
