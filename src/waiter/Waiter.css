@@ -181,6 +181,19 @@
 }
 
 .WaiterHeader > .material-symbols-outlined{
-  font-size: 60px !important;
+  font-size: 60px;
   color:#AA3D01;
+}
+
+.material-symbols-outlined{
+  height:10%;
+  align-self: center;
+}
+
+.btn-logout{
+  font-size: 50px !important;
+}
+
+.btn-alert{
+  font-size: 30px !important;
 }
