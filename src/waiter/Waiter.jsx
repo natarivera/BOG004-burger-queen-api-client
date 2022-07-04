@@ -11,6 +11,7 @@ import {OrdersApi} from "../api/api-utils";
 
 
 
+
 export default class Waiter extends React.Component {
 
     constructor(props) {
@@ -116,13 +117,17 @@ export default class Waiter extends React.Component {
             {!this.state.numTable && <Logo />}
             {!this.state.numTable && <div className="table" onClick={this.handleClick.bind(this)}>{arrayTables}</div>}
 
-            {this.state.numTable &&
+            {this.props.user && this.state.numTable &&
                 <div className="Order">
                     <Logo />
                     <div className="WaiterHeader">
-                        <OrdersAlert />
+                    <div className="material-symbols-outlined  btn-logout">
+                            <button onClick={this.props.logoutFn}>logout</button>
+                    </div>
+                        <OrdersAlert className="btn-alert"/>
                         <NameWaiter user={this.props.user} />
                     </div>
+                    
                     <Customer setCustomer={this.setCustomer} customer={this.state.customer} />
                     <div />
                     <Summary products={this.state.products} addProduct={this.addProduct} user={this.props.user} subProduct={this.subProduct} sendOrder={this.sendOrder}/>

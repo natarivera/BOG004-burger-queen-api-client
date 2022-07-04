@@ -3,7 +3,7 @@ import Waiter from "./waiter/Waiter";
 import Login from "./login/Login";
 import "./App.css";
 import "normalize.css";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import {UserApi} from './api/api-utils';
 import Admin from "./admin/Admin";
 import Chef from "./kitchen/Chef";
@@ -49,9 +49,9 @@ class App extends React.Component {
         <Route path="/waiter" element={<Waiter user={this.state.user} logoutFn={this.logout} tablesCount={12}/>} />
         <Route path="/admin" element={<Admin user={this.state.user} logoutFn={this.logout} />} />
         <Route path="/chef" element={<Chef user={this.state.user} logoutFn={this.logout} />} />
-        <Route path="/" element={<Login user={this.state.user} loginFn={this.login} />} />
-      </Routes>
-      
+        <Route path="/" element={<Login user={this.state.user} loginFn={this.login} />} />        
+      </Routes>      
+
     </Router>    
     </div>;
   }
