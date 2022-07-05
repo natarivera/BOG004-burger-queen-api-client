@@ -46,7 +46,7 @@ export default class OrdersApi{
             );   
     }
     
-    list(status){        
+    list(status){
         let listURL = this.baseURL;         
         if(status !== undefined){
             listURL += `?status=${status}`;

@@ -180,7 +180,7 @@
   margin: 20px;
 }
 
-.WaiterHeader > .material-symbols-outlined{
+.WaiterHeader .material-symbols-outlined{
   font-size: 60px;
   color:#AA3D01;
 }
@@ -196,4 +196,10 @@
 
 .btn-alert{
   font-size: 30px !important;
+}
+
+.doneCount{
+  position: absolute;
+  margin-left: -25px;
+  margin-top: -15px;
 }

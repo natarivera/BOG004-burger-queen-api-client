@@ -4,7 +4,7 @@ import TableOrder from "./TableOrder";
 import "./Chef.css"
 import Logo from "../components/Logo"
 import NameWaiter from "../waiter/NameWaiter";
-import App from "../App";
+
 
 export default function Chef(props) {
 
