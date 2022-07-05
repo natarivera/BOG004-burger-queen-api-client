@@ -8,6 +8,7 @@ import Customer from "./Customer";
 import NameWaiter from "./NameWaiter";
 import OrdersAlert from "./OrdersAlert";
 import {OrdersApi} from "../api/api-utils";
+import TableOrder from "./TableOrder";
 
 
 
@@ -16,7 +17,7 @@ export default class Waiter extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { numTable: undefined, products: new Map(), customer: '', error:undefined };
+        this.state = { numTable: undefined, products: new Map(), customer: '', error:undefined, showOrderTable:false };
         this.ordersApi = new OrdersApi(props.user.accessToken);
         this.handleClick = this.handleClick.bind(this);
         this.addProduct = this.addProduct.bind(this);
@@ -124,15 +125,18 @@ export default class Waiter extends React.Component {
                     <div className="material-symbols-outlined  btn-logout">
                             <button onClick={this.props.logoutFn}>logout</button>
                     </div>
-                        <OrdersAlert className="btn-alert"/>
+                        <OrdersAlert className="btn-alert" user={this.props.user} onClick={()=>{this.setState({showOrderTable: !this.state.showOrderTable})}}/>
                         <NameWaiter user={this.props.user} />
                     </div>
-                    
-                    <Customer setCustomer={this.setCustomer} customer={this.state.customer} />
+                                        
+                    {!this.state.showOrderTable && <Customer setCustomer={this.setCustomer} customer={this.state.customer} />}
                     <div />
-                    <Summary products={this.state.products} addProduct={this.addProduct} user={this.props.user} subProduct={this.subProduct} sendOrder={this.sendOrder}/>
-                    <Products numTable={this.state.numTable} addProduct={this.addProduct} user={this.props.user} />
-                </div>
+                    {!this.state.showOrderTable && <Summary products={this.state.products} addProduct={this.addProduct} user={this.props.user} subProduct={this.subProduct} sendOrder={this.sendOrder}/>}
+                    {!this.state.showOrderTable && <Products numTable={this.state.numTable} addProduct={this.addProduct} user={this.props.user} />}                    
+                </div>                
+            }
+            {this.props.user && this.state.numTable && this.state.showOrderTable && 
+                <TableOrder user={this.props.user} />
             }
             {this.state.error && <div>{this.state.error}</div>}
             {!this.props.user && (<Navigate to="/" />)}     

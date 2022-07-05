@@ -85,10 +85,7 @@ const server = setupServer(
         return res(ctx.status(500))
       }),
     )
-  
     render(<Chef user={user} logoutFn={()=>{}}/>)
-   
     await waitFor(() => screen.findByText(/Error en la consulta de productos/i));
-    
   })
 
