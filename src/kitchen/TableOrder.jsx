@@ -43,7 +43,7 @@ export default function TableOrder(props){
             )
             .catch(
                 (error)=>{
-                    //algo
+                    setErrorMsg(error.message);
                 }
             );
     }

@@ -4,7 +4,7 @@ import Login from "./login/Login";
 import "./App.css";
 import "normalize.css";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import {UserApi} from './api/api-utils';
+import {AuthApi} from './api/api-utils';
 import Admin from "./admin/Admin";
 import Chef from "./kitchen/Chef";
 
@@ -18,12 +18,12 @@ class App extends React.Component {
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.userApi = new UserApi();
+    this.authApi = new AuthApi();
   }
 
   login(user){
-    //1. llamar al servicio
-    return this.userApi.login(user)
+    //1. llamar al servicio    
+    return this.authApi.login(user)
     .then(
       (apiUser) => {        
         this.setState({user: apiUser});        
