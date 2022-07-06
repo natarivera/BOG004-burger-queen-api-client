@@ -36,7 +36,7 @@ export default class LoginForm extends React.Component {
         return (
             <form className="LoginForm" onSubmit={this.handleSubmit}>
                 <input className= "loginInput" type="email" required minLength={7} name="email" value={this.state.email} placeholder="Ingrese su correo electronico" onChange={this.handleChange} />
-                <input className= "loginInput"type="password" required name="password" minLength={4} value={this.state.password} placeholder="Ingrese su contraseña" onChange={this.handleChange} />
+                <input className= "loginInput" type="password" required name="password" minLength={4} value={this.state.password} placeholder="Ingrese su contraseña" onChange={this.handleChange} />
                 <input className= "btnLogin" type="submit" value="Ingresar" />
                 <div>{this.state.error?.toString()}</div>
             </form>

@@ -1,6 +1,6 @@
 import User from "../../model/User";
 
-export class UserApi {
+export class AuthApi {
     login(user){
         return new Promise(
             (resolve, reject)=>{
